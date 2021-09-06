@@ -6,27 +6,101 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Movie API - Documentation</title>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style>
 </head>
 
 <body>
 
 <h1>Movie API: documentation</h1>
 
-<p>
-    <ul>
-        <li>The API must be a Node.js and Express application.</li>
-        <li>The API must use REST architecture, with URL endpoints corresponding to the data operations.</li>
-        <li>The API must use at least three middleware modules, such as the body-parser package for reading data from requests and morgan for logging.</li>
-        <li>The API must use a “package.json” file.</li>
-        <li>The API must provide movie information in JSON format.</li>
-        <li>The API must be tested in Postman.</li>
-        <li>The API must include user authentication and authorization code.</li>
-        <li>The API must include data validation logic.</li>
-        <li>The API must meet data security regulations.</li>
-        <li>The API source code must be deployed to a publicly accessible platform like GitHub.</li>
-        <li>The API must be deployed to Heroku.</li>
-    </ul>
-</p>
+<table>
+    <tr>
+        <th>Request</th>
+        <th>URL</th>
+        <th>HTTP Method</th>
+        <th>Request Data Format</th>
+        <th>Response Data Body Format</th>
+    </tr>
+    <tr>
+        <td>Return a list of ALL movies to the user</td>
+        <td>/movies</td>
+        <td>GET</td>
+        <td>none</td>
+        <td>A JSON object holding data about all the movies</td>
+    </tr>
+    <tr>
+        <td>Return data (description, genre, director, image URL, whether it’s featured or not) about a single movie by title to the user</td>
+        <td>/movies/[Title]</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object holding data about a single movie</td>
+    </tr>
+    <tr>
+        <td>Return data about a genre (description) by name/title (e.g., “Thriller”)</td>
+        <td>/movies/[Title]/genre</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A text message indicating the genre of the movie</td>
+    </tr>
+    <tr>
+        <td>Return data about a director (bio, birth year, death year) by name</td>
+        <td>/directors/[Name]</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object holding data about a director</td>
+    </tr>
+    <tr>
+        <td>Allow new users to register</td>
+        <td>/myaccount</td>
+        <td>POST</td>
+        <td>A JSON object holding data about the user</td>
+        <td>A JSON object holding data about the user that registered</td>
+    </tr>
+    <tr>
+        <td>Allow users to update their user info (username)</td>
+        <td>/myaccount</td>
+        <td>PUT</td>
+        <td>None</td>
+        <td>A text message indicating that the user info was updated</td>
+    </tr>
+    <tr>
+        <td>Allow users to add a movie to their list of favorites</td>
+        <td>/movies</td>
+        <td>PUT</td>
+        <td>None</td>
+        <td>A text message indicating that a movie has been added</td>
+    </tr>
+    <tr>
+        <td>Allow users to remove a movie from their list of favorites</td>
+        <td>/mytopmovies</td>
+        <td>DELETE</td>
+        <td>None</td>
+        <td>A text message indicating that a movie has been removed</td>
+    </tr>
+    <tr>
+        <td>Allow existing users to deregister</td>
+        <td>/myaccount</td>
+        <td>DELETE</td>
+        <td>None</td>
+        <td>A text message indicating that the user email has been removed</td>
+    </tr>
+</table>
 
 </body>
 
