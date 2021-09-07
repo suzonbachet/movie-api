@@ -8,7 +8,9 @@ const app = express();
 
 app.use(morgan('common'));
 
-let topMovies = [
+
+// The array movies holds 10 movies and their properties //
+let movies = [
     {
     id: '1',
     title: 'Mommy',
@@ -80,6 +82,51 @@ let topMovies = [
     genre: 'Drama'
     }
   ];
+
+// The array directors hold 10 directors and their properties //
+
+let directors = [
+    {
+    name: 'Xavier Dolan',
+    birth: '1989'
+    },
+    {
+    name: 'Christophe Honoré',
+    birth: '1970'
+    },
+    {
+    name: 'Gaspar Noé',
+    birth: '1963'
+    },
+    {
+    name: 'Alfonso Cuarón',
+    birth: '1961'
+    },
+    {
+    name: 'James Cameron',
+    birth: '1954'
+    },
+    {
+    name: 'M. Night Shyamalan',
+    birth: '1970'
+    },
+    {
+    name: 'Christopher Nolan',
+    birth: '1970'
+    },
+    {
+    name: 'Peter Weir',
+    birth: '1944'
+    },
+    {
+    name: 'Lars von Trier',
+    birth: '1956'
+    },
+    {
+    name: 'Gus Van Sant',
+    birth: '1952'
+    }
+];    
 
 app.use(express.static('public'));
 
