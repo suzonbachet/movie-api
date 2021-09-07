@@ -58,7 +58,7 @@ let movies = [
     title: 'Interstellar',
     director: 'Christopher Nolan',
     year: '2014',
-    genre: 'science fiction'
+    genre: 'Science Fiction'
     },
     {
     id: '8',
@@ -128,11 +128,57 @@ let directors = [
     }
 ];    
 
+// The genres array holds 10 genres and their properties //
+
+let genres = [
+    {
+    name: 'Drama',
+    description: 'Drama Films are serious presentations or stories with settings or life situations that portray realistic characters in conflict with either themselves, others, or forces of nature.'
+    },
+    {
+    name: 'Romance',
+    description: 'Romance films are love stories, or affairs of the heart that center on passion, emotion, and the romantic, affectionate involvement of the main characters.'
+    },
+    {
+    name: 'Fantasy',
+    description: 'Fantasy films are often in the context of the imagination, dreams, or hallucinations of a character or within the projected vision of the storyteller. '
+    },
+    {
+    name: 'Science Fiction',
+    description: 'Science Fiction films are usually scientific, visionary, comic-strip-like, and imaginative, and usually visualized through fanciful, imaginative settings, expert film production design, advanced technology gadgets (i.e., robots and spaceships), scientific developments, or by fantastic special effects.'
+    },
+    {
+    name: 'Thriller',
+    description: 'These are types of films known to promote intense excitement, suspense, a high level of anticipation, ultra-heightened expectation, uncertainty, anxiety, and nerve-wracking tension.'
+    }
+];   
+
+// The users array holds users and their informations //
+
+let users = [
+    {
+        username: 'louislegrand',
+        password: 'louloudu78',
+        email: 'louislegrand@email.com',
+        birthday: '01-04-2000',
+        favoriteMovies: ['2', '7', '8'],
+        id: '1',
+    },
+    {
+        username: 'marieantoinette',
+        password: 'mariedu78',
+        email: 'marieantoinette@email.com',
+        birthday: '01-04-1999',
+        favoriteMovies: ['4', '10'],
+        id: '2',
+    },
+];
+
 app.use(express.static('public'));
 
 // Gets the list of data about all movies
 app.get('/movies', (req,res) => {
-    res.json(movies)
+    res.status(200).json(movies);
 });
 
 // Gets the description of a single movie, by title
@@ -141,16 +187,10 @@ app.get('/movies/:title', (req, res) => {
         {return movie.title === req.params.title }));
 });
 
-// Gets data about a genre, by title
-app.get('/movies/:title/genre', (req, res) => {
-    res.send(movies.find((movie) =>
-        {return movie.title === req.params.title }));
-});
-
-// Gets data about a director, by name
-app.get('/directors/:name', (req, res) => {
-    res.send(directors.find((director) =>
-        {return director.name === req.params.name }));
+// Gets data about a genre, by name
+app.get('/movies/genres', (req, res) => {
+    res.send(genres.find((genre) =>
+        {return genre.name === req.params.name }));
 });
 
 // Gets data about a director, by name
@@ -163,8 +203,8 @@ app.get('/directors/:name', (req, res) => {
 app.post('/myaccount', (req, res) => {
     let newUser = req.body;
 
-    if (!newUser.userName) {
-        const message = 'Missing user name in request body.';
+    if (!newUser.username) {
+        const message = 'Missing username in request body.';
         res.status(400).send(message);
     } else {
         users.push(newUser);
@@ -175,17 +215,17 @@ app.post('/myaccount', (req, res) => {
 // Update user info by user name
 app.put('/myaccount', (req, res) => {
     let user = users.find(user) => {
-        return user.userName === req.params.userName });
+        return user.username === req.params.username });
     
-    if (!newUserName.userName) {
+    if (!newUserName.username) {
         const message = 'Missing new user name in request body.';
         res.status(400).send(message);
     } else {
         const message = 'User name has been changed.'
-        user.put(newUserName);
-        res.status(201.sens(newUserName);
+        user.put(username);
+        res.status(201).send(username);
     }
-    });
+});
 
 // Add a movie to the user's list of favorites
 app.put('/movies', (req, res) => {
@@ -193,18 +233,18 @@ app.put('/movies', (req, res) => {
 })
 
 // Remove a movie from the user's list of favorites
-app.delete('/mytopmovies', (req, res) => {
+app.delete('/myfavoritemovies', (req, res) => {
 
 })
 
 // Remove existing user
 app.delete('/myaccount', (req, res) => {
     let user = users.find((user) => {
-        return user.userName = req.params.userName });
+        return user.username = req.params.username });
 
     if (user) {
         users = users.filter((obj) => {
-            return obj.userName !== req.params.userName });
+            return obj.username !== req.params.username });
             res.status(201).send(req.params.id + 'was deleted.');
     }
 });   
