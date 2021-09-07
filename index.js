@@ -1,9 +1,8 @@
 const bodyParser = require('body-parser');
 const express = require('express');
-const { isError } = require('lodash');
-    morgan = require('morgan'),
-    bodyParser = require('body-parser'),
-    uuid = require('uuid');
+const lodash = require('lodash');
+const morgan = require('morgan'),
+const uuid = require('uuid');
 
 const app = express();
 
@@ -118,17 +117,18 @@ app.put('/myaccount', (req, res) => {
         const message = 'User name has been changed.'
         user.put(newUserName);
         res.status(201.sens(newUserName);
+    }
     });
 
 // Add a movie to the user's list of favorites
 app.put('/movies', (req, res) => {
 
-}
+})
 
 // Remove a movie from the user's list of favorites
 app.delete('/mytopmovies', (req, res) => {
 
-}
+})
 
 // Remove existing user
 app.delete('/myaccount', (req, res) => {
