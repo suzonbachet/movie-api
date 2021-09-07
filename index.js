@@ -10,54 +10,74 @@ app.use(morgan('common'));
 
 let topMovies = [
     {
-      title: 'Mommy',
-      director: 'Xavier Dolan',
-      year: '2014'
+    id: '1',
+    title: 'Mommy',
+    director: 'Xavier Dolan',
+    year: '2014',
+    genre: 'Drama'
     },
     {
+    id: '2',
     title: 'Les bien-aimés',
     director: 'Christophe Honoré',
-    year: '2011'
+    year: '2011',
+    genre: 'Romance'
     },
     {
+    id: '3',
     title: 'Climax',
     director: 'Gaspar Noé',
-    year: '2018'
+    year: '2018',
+    genre: 'Drama'
     },
     {
+    id: '4',
     title: 'Harry Potter & The Prisonner Of Azkaban',
     director: 'Alfonso Cuarón',
-    year: '2004'
+    year: '2004',
+    genre: 'Fantasy'
     },
     {
+    id: '5',
     title: 'Titanic',
     director: 'James Cameron',
-    year: '1997'
+    year: '1997',
+    genre: 'Romance'
     },
     {
+    id: '6',
     title: 'The Sixth Sense',
     director: 'M. Night Shyamalan',
-    year: '1999'
+    year: '1999',
+    genre: 'Thriller'
     },
     {
+    id: '7',
     title: 'Interstellar',
     director: 'Christopher Nolan',
-    year: '2014'
+    year: '2014',
+    genre: 'science fiction'
     },
     {
+    id: '8',
     title: 'The Truman Show',
     director: 'Peter Weir',
-    year: '1998'
+    year: '1998',
+    genre: 'Drama'
     },
     {
+    id: '9',
     title: 'Dogville',
     director: 'Lars von Trier',
-    year: '2003'
+    year: '2003',
+    genre: 'Drama'
     },
     {
+    id: '10',
     title: 'Elephant',
     director: 'Gus Van Sant',
-    year: '2003'
+    year: '2003',
+    genre: 'Drama'
     }
   ];
 
