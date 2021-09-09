@@ -1,7 +1,7 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const lodash = require('lodash');
-const morgan = require('morgan'),
+const morgan = require('morgan');
 const uuid = require('uuid');
 
 const app = express();
@@ -214,7 +214,7 @@ app.post('/myaccount', (req, res) => {
 
 // Update user info by user name
 app.put('/myaccount', (req, res) => {
-    let user = users.find(user) => {
+    let user = users.find((user) => {
         return user.username === req.params.username });
     
     if (!newUserName.username) {
