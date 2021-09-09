@@ -81,6 +81,13 @@ let movies = [
     year: '2003',
     genre: 'Drama'
     }
+    {
+    id: '11',
+    title: 'Dans Paris'
+    director: 'Christophe Honoré',
+    year: '2006',
+    genre: 'Drama'
+    }
   ];
 
 // The array directors hold 10 directors and their properties //
