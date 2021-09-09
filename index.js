@@ -148,7 +148,7 @@ let genres = [
     },
     {
     name: 'Fantasy',
-    description: 'Fantasy films are often in the context of the imagination, dreams, or hallucinations of a character or within the projected vision of the storyteller. '
+    description: 'Fantasy films are often in the context of the imagination, dreams, or hallucinations of a character or within the projected vision of the storyteller.'
     },
     {
     name: 'Science Fiction',
