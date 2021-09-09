@@ -133,7 +133,7 @@ let directors = [
 let genres = [
     {
     name: 'Drama',
-    description: 'Drama Films are serious presentations or stories with settings or life situations that portray realistic characters in conflict with either themselves, others, or forces of nature.'
+    description: 'Drama films are serious presentations or stories with settings or life situations that portray realistic characters in conflict with either themselves, others, or forces of nature.'
     },
     {
     name: 'Romance',
