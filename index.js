@@ -80,7 +80,7 @@ let movies = [
     director: 'Gus Van Sant',
     year: '2003',
     genre: 'Drama'
-    }
+    },
     {
     id: '11',
     title: 'Dans Paris'
