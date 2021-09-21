@@ -195,7 +195,7 @@ app.get('/movies/:title', (req, res) => {
 });
 
 // Gets data about a genre, by name
-app.get('/movies/genres', (req, res) => {
+app.get('/movies/:genre', (req, res) => {
     res.send(genres.find((genre) =>
         {return genre.name === req.params.name }));
 });
@@ -207,7 +207,7 @@ app.get('/directors/:name', (req, res) => {
 });
 
 // Add data for a new user to register
-app.post('/myaccount', (req, res) => {
+app.post('/users/:username', (req, res) => {
     let newUser = req.body;
 
     if (!newUser.username) {
@@ -220,7 +220,7 @@ app.post('/myaccount', (req, res) => {
 });
 
 // Update user info by user name
-app.put('/myaccount', (req, res) => {
+app.put('/users/:username', (req, res) => {
     let user = users.find((user) => {
         return user.username === req.params.username });
     
@@ -240,12 +240,12 @@ app.put('/movies', (req, res) => {
 })
 
 // Remove a movie from the user's list of favorites
-app.delete('/myfavoritemovies', (req, res) => {
+app.delete('/users/:username/myfavoritemovies', (req, res) => {
 
 })
 
 // Remove existing user
-app.delete('/myaccount', (req, res) => {
+app.delete('/users/:username', (req, res) => {
     let user = users.find((user) => {
         return user.username = req.params.username });
 
