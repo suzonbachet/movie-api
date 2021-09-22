@@ -235,12 +235,12 @@ app.put('/users/:username', (req, res) => {
 });
 
 // Add a movie to the user's list of favorites
-app.put('/movies', (req, res) => {
+app.put('users/:username/movies/:title', (req, res) => {
 
 })
 
 // Remove a movie from the user's list of favorites
-app.delete('/users/:username/myfavoritemovies', (req, res) => {
+app.delete('/users/:username/movies/:title', (req, res) => {
 
 })
 
