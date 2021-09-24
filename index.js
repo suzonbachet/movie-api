@@ -227,7 +227,7 @@ app.get('/directors/:name', (req, res) => {
     Birthday: Date
 }
 */
-app.post('/users', req, res) => {
+app.post('/users', (req, res) => {
     Users.findOne({ Username: req.body.Username })
         .then((user) => {
             if(user) {
@@ -243,13 +243,13 @@ app.post('/users', req, res) => {
                     .then((user) => {res.status(201).json(user) })
                 .catch((error) => {
                     console.error(error);
-                    res.status(500).send('Error' + error);
+                    res.status(500).send('Error: ' + error);
                 })
             }
         })
         .catch((error) => {
             console.error(error);
-            res.status(500).send('Error' + error);
+            res.status(500).send('Error: ' + error);
         });
 });
 
