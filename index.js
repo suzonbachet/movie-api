@@ -6,6 +6,14 @@ const uuid = require('uuid');
 
 const app = express();
 
+const mongoose = require('mongoose');
+const Models = require('./models.js');
+
+const Movies = Models.Movie;
+const Users = Models.User;
+
+mongoose.connect('mongodb://localhost:27017/test', {use NewUrlParser: true, useUnifiedTopology: true});
+
 app.use(morgan('common'));
 
 
