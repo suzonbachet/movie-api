@@ -6,15 +6,20 @@ const uuid = require('uuid');
 
 const app = express();
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 const mongoose = require('mongoose');
 const Models = require('./models.js');
 
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect('mongodb://localhost:27017/test', {use NewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true, useUnifiedTopology: true});
 
 app.use(morgan('common'));
+
+app.use(express.static('public'));
 
 
 // The array movies holds 10 movies and their properties //
@@ -189,8 +194,6 @@ let users = [
     },
 ];
 
-app.use(express.static('public'));
-
 // Gets the list of data about all movies
 app.get('/movies', (req,res) => {
     res.status(200).json(movies);
@@ -214,18 +217,42 @@ app.get('/directors/:name', (req, res) => {
         {return director.name === req.params.name }));
 });
 
-// Add data for a new user to register
-app.post('/users/:username', (req, res) => {
-    let newUser = req.body;
-
-    if (!newUser.username) {
-        const message = 'Missing username in request body.';
-        res.status(400).send(message);
-    } else {
-        users.push(newUser);
-        res.status(201).send(newUser);
-    }
+// Add a user
+/* We'll expect JSON in this format
+{
+    ID: Integer,
+    Username, String,
+    Password: String,
+    Email: String,
+    Birthday: Date
+}
+*/
+app.post('/users', req, res) => {
+    Users.findOne({ Username: req.body.Username })
+        .then((user) => {
+            if(user) {
+                return res.status(400).send(req.body.Username + 'already exists');
+            } else {
+                Users
+                    .create({
+                        Username: req.body.Username,
+                        Password: req.body.Password,
+                        Email: req.body.Email,
+                        Birthday: req.body.Birthday
+                    })
+                    .then((user) => {res.status(201).json(user) })
+                .catch((error) => {
+                    console.error(error);
+                    res.status(500).send('Error' + error);
+                })
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).send('Error' + error);
+        });
 });
+
 
 // Update user info by user name
 app.put('/users/:username', (req, res) => {
