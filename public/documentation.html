@@ -36,69 +36,79 @@
         <th>HTTP Method</th>
         <th>Request Data Format</th>
         <th>Response Data Body Format</th>
+        <th>Response Example</th>
     </tr>
     <tr>
         <td>Return a list of ALL movies to the user</td>
         <td>/movies</td>
         <td>GET</td>
-        <td>none</td>
+        <td>None</td>
         <td>A JSON object holding data about all the movies</td>
+        <td>Response Example</td>
     </tr>
     <tr>
         <td>Return data (description, genre, director, image URL, whether it’s featured or not) about a single movie by title to the user</td>
-        <td>/movies/[Title]</td>
+        <td>/movies/:movieID</td>
         <td>GET</td>
         <td>None</td>
         <td>A JSON object holding data about a single movie</td>
+        <td>{"_id":{"$oid":"613b69915b64c179a0e02dd5"},"Title":"Mommy","Description":"The story concerns a mother with a sometimes-violent teenage son, struggling to control his behaviour in a hypothetical future in which parents have the legal option to commit troubled youth to public hospitals.","Genre":{"Name":"Drama","Description":"Drama films are serious presentations or stories with settings or life situations that portray realistic characters in conflict with either themselves, others, or forces of nature."},"Director":{"Name":"Xavier Dolan","Bio":"Xavier Dolan is a Canadian filmmaker, actor, and costume designer.","Birth":"1989"},"ImagePath":"mommy.png","Featured":true}</td>
     </tr>
     <tr>
         <td>Return data about a genre (description) by name/title (e.g., “Thriller”)</td>
-        <td>/movies/[Title]/genre</td>
+        <td>/movies/genre</td>
         <td>GET</td>
         <td>None</td>
         <td>A text message indicating the genre of the movie</td>
+        <td>Romance: Romance films are love stories, or affairs of the heart that center on passion, emotion, and the romantic, affectionate involvement of the main characters.</td>
     </tr>
     <tr>
         <td>Return data about a director (bio, birth year, death year) by name</td>
-        <td>/directors/[Name]</td>
+        <td>/directors/:directorID</td>
         <td>GET</td>
         <td>None</td>
         <td>A JSON object holding data about a director</td>
+        <td>{"Name":"Gaspar Noé","Bio":"Gaspar Noé is an Argentine filmmaker based in Paris, France.","Birth":"1963"}</td>
     </tr>
     <tr>
         <td>Allow new users to register</td>
-        <td>/myaccount</td>
+        <td>/users</td>
         <td>POST</td>
         <td>A JSON object holding data about the user</td>
         <td>A JSON object holding data about the user that registered</td>
+        <td>{"_id":{"$oid":"613db0535b64c179a0e02ddf"},"Username":"Louislegrand","Password":"louislebgdu78","Email":"louislegrand@email.com","Birthday":{"$date":"1999-04-01T00:00:00Z"},"FavoriteMovies":{"$oid":"613b69915b64c179a0e02dd5"}}</td>
     </tr>
     <tr>
         <td>Allow users to update their user info (username)</td>
-        <td>/myaccount</td>
+        <td>/users/:userID</td>
         <td>PUT</td>
         <td>None</td>
         <td>A text message indicating that the user info was updated</td>
+        <td>Your username was successfuly updated.</td>
     </tr>
     <tr>
         <td>Allow users to add a movie to their list of favorites</td>
-        <td>/movies</td>
+        <td>/users/:userID/favoritemovies</td>
         <td>PUT</td>
         <td>None</td>
         <td>A text message indicating that a movie has been added</td>
+        <td>"Titanic" has been added to your favorite movies.</td>
     </tr>
     <tr>
         <td>Allow users to remove a movie from their list of favorites</td>
-        <td>/mytopmovies</td>
+        <td>/users/:userID/favoritemovies</td>
         <td>DELETE</td>
         <td>None</td>
         <td>A text message indicating that a movie has been removed</td>
+        <td>"Titanic" has been removed from your favorite movies.</td>
     </tr>
     <tr>
         <td>Allow existing users to deregister</td>
-        <td>/myaccount</td>
+        <td>/users/:userID</td>
         <td>DELETE</td>
         <td>None</td>
-        <td>A text message indicating that the user email has been removed</td>
+        <td>A text message indicating that the user has been removed</td>
+        <td>Louislegrand was deleted.</td>
     </tr>
 </table>
 
