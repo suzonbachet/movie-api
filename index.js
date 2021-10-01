@@ -51,16 +51,36 @@ app.get('/movies/:Title', (req, res) => {
 });
 
 // Return data about a genre by name
-app.get('/genres/:Name', (req, res) => {
-    res.send(genres.find((genre) =>
-        {return genre.name === req.params.name }));
+app.get('/movies/:Title/genre', (req, res) => {
+    Movies.findOne({Title: req.params.Title})
+        .then((movie) => {
+            if(!movie){
+                res.status(400).send(req.params.Title + ' was not found.');
+            } else {
+            res.json(movie.Genre);
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
 
-// Gets data about a director, by name
-app.get('/directors/:name', (req, res) => {
-    res.send(directors.find((director) =>
-        {return director.name === req.params.name }));
+// Gets data about a director by name
+app.get('/movies/:Title/director', (req, res) => {
+    Movies.findOne({Title: req.params.Title})
+        .then((movie) => {
+            if(!movie){
+                res.status(400).send(req.params.Title + ' was not found.');
+            } else {
+            res.json(movie.Director);
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+            res.status(500).send('Error: ' + err);
+        });
 });
 
 // Add a user
