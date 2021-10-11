@@ -9,6 +9,8 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+let auth = require('./auth')(app);
+
 const mongoose = require('mongoose');
 const Models = require('./models.js');
 
